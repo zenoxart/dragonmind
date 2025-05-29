@@ -11,21 +11,30 @@ body {
 
 .hero {
   text-align: center;
-  padding: 2.5rem 1rem 1rem 1rem; /* Reduced padding */
+  padding: 2.5rem 1rem 1rem 1rem;
+  /* Reduced padding */
   background: linear-gradient(145deg, #2a0a18 60%, #18131d 100%);
   border-bottom: 2px solid #5a0a1b;
   box-shadow: 0 8px 32px rgba(90, 10, 27, 0.25);
-  animation: fadeInDown 1.2s cubic-bezier(.77,0,.18,1) both;
+  animation: fadeInDown 1.2s cubic-bezier(.77, 0, .18, 1) both;
 }
 
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-40px);}
-  to { opacity: 1; transform: translateY(0);}
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero h1 {
   font-family: 'UnifrakturCook', 'Cinzel', 'Georgia', serif;
-  font-size: 2.2rem; /* Reduced font size */
+  font-size: 2.2rem;
+  /* Reduced font size */
   color: #ff003c;
   text-shadow: 0 2px 18px #000, 0 0 8px #ff003c, 0 0 2px #fff;
   letter-spacing: 0.12em;
@@ -33,20 +42,31 @@ body {
 }
 
 @keyframes glowRed {
-  from { text-shadow: 0 2px 18px #000, 0 0 8px #ff003c, 0 0 2px #fff; }
-  to   { text-shadow: 0 4px 32px #ff003c, 0 0 16px #ff003c, 0 0 8px #fff; }
+  from {
+    text-shadow: 0 2px 18px #000, 0 0 8px #ff003c, 0 0 2px #fff;
+  }
+
+  to {
+    text-shadow: 0 4px 32px #ff003c, 0 0 16px #ff003c, 0 0 8px #fff;
+  }
 }
 
 .hero p {
   color: #ffb3c6;
-  font-size: 1.05rem; /* Reduced font size */
+  font-size: 1.05rem;
+  /* Reduced font size */
   font-family: 'Cinzel', 'Georgia', serif;
   animation: fadeIn 2s 0.5s both;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0;}
-  to { opacity: 1;}
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .tree {
@@ -75,8 +95,13 @@ body {
 }
 
 @keyframes pulseRoot {
-  from { box-shadow: 0 6px 24px #5a0a1b80, 0 0 0 #ff003c00; }
-  to   { box-shadow: 0 12px 36px #ff003c99, 0 0 16px #ff003c44; }
+  from {
+    box-shadow: 0 6px 24px #5a0a1b80, 0 0 0 #ff003c00;
+  }
+
+  to {
+    box-shadow: 0 12px 36px #ff003c99, 0 0 16px #ff003c44;
+  }
 }
 
 .tree-branches {
@@ -109,7 +134,7 @@ body {
   text-align: left;
   box-shadow: 0 4px 16px rgba(90, 10, 27, 0.25);
   border: 1.5px solid #ff003c;
-  transition: transform 0.3s cubic-bezier(.77,0,.18,1), box-shadow 0.3s, border-color 0.2s;
+  transition: transform 0.3s cubic-bezier(.77, 0, .18, 1), box-shadow 0.3s, border-color 0.2s;
   margin-left: 1.5rem;
   min-width: 260px;
   max-width: 420px;
@@ -181,8 +206,13 @@ body {
 }
 
 @keyframes branchPulse {
-  from { box-shadow: 0 0 0 #ff003c00; }
-  to   { box-shadow: 0 0 16px #ff003c88; }
+  from {
+    box-shadow: 0 0 0 #ff003c00;
+  }
+
+  to {
+    box-shadow: 0 0 16px #ff003c88;
+  }
 }
 
 .footer {
@@ -228,4 +258,159 @@ a:hover {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   text-align: center;
+}
+
+.dashboard {
+  background: transparent;
+  border-radius: 0.8rem;
+  box-shadow: none;
+  padding: 1.2rem 0 0.5rem 0;
+  margin: 2rem auto 1.2rem auto;
+  max-width: 900px;
+  color: #ffb3c6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.dashboard h2 {
+  color: #ff003c;
+  font-family: 'UnifrakturCook', 'Cinzel', 'Georgia', serif;
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+.dashboard .stats {
+  display: flex;
+  gap: 2.2rem;
+  margin: 0;
+  flex-wrap: nowrap;
+}
+
+.dashboard .stat {
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  min-width: 80px;
+  text-align: center;
+  color: #ffb3c6;
+  box-shadow: none;
+  font-size: 1rem;
+  border-right: 1px solid #ff003c33;
+}
+
+.dashboard .stat:last-child {
+  border-right: none;
+}
+
+.dashboard .stat div:first-child {
+  font-weight: bold;
+  color: #ff003c;
+  font-size: 1rem;
+  margin-bottom: 0.1rem;
+}
+
+.dashboard .stat div:last-child {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.new-topic-btn {
+  background: #ff003c;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.98rem;
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-weight: bold;
+  margin-bottom: 0;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px #ff003c33;
+}
+
+.new-topic-btn:hover {
+  background: #fff;
+  color: #ff003c;
+}
+
+.forum-section {
+  background: linear-gradient(135deg, #2a0a18 60%, #18131d 100%);
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 16px #2d061655;
+  padding: 2rem 1.5rem;
+  margin: 2.5rem auto 2rem auto;
+  max-width: 900px;
+  color: #ffb3c6;
+  animation: fadeIn 1.2s both;
+  border: 1.5px solid #ff003c33;
+}
+
+.forum-section h3 {
+  color: #ff003c;
+  font-family: 'UnifrakturCook', 'Cinzel', 'Georgia', serif;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 8px #000, 0 0 2px #ff003c44;
+}
+
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.article-list li {
+  background: #231a24;
+  border-left: 4px solid #ff003c;
+  border-radius: 0.7rem;
+  margin-bottom: 1.2rem;
+  padding: 1.2rem 1.5rem 1.2rem 1.2rem;
+  box-shadow: 0 2px 8px #ff003c22;
+  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+  position: relative;
+  animation: fadeInUp 1.1s both;
+}
+
+.article-list li:hover {
+  box-shadow: 0 6px 24px #ff003c55;
+  border-color: #fff;
+  background: #2a0a18;
+}
+
+.article-title {
+  color: #ff003c;
+  font-size: 1.18rem;
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 8px #000, 0 0 2px #ff003c44;
+  transition: color 0.2s;
+}
+
+.article-title:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.article-meta {
+  font-size: 0.95rem;
+  color: #ffb3c6;
+  margin-bottom: 0.5rem;
+  font-family: 'Cinzel', 'Georgia', serif;
+}
+
+.article-excerpt {
+  color: #f5e9e0;
+  font-size: 1.04rem;
+  font-family: 'Cinzel', 'Georgia', serif;
+  margin-top: 0.4rem;
+  text-shadow: 0 1px 4px #000;
 }
