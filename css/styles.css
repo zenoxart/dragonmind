@@ -1,0 +1,36 @@
+body {
+  background-color: #111;
+  color: #f8f9fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.hero {
+  padding: 6rem 1rem;
+  text-align: center;
+  background: linear-gradient(145deg, #1f1f1f, #222);
+  border-bottom: 1px solid #333;
+}
+
+.section {
+  padding: 3rem 1rem;
+}
+
+.section-title {
+  color: #e63946;
+}
+
+.footer {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: #1a1a1a;
+  border-top: 1px solid #333;
+}
+
+a {
+  color: #e63946;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
