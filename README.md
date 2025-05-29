@@ -5,18 +5,6 @@
 
 ---
 
-## 🚀 Getting Started
-
-1. **Frontend Only:**  
-   Open `frontend/index.html` in your browser to explore the site statically.
-
-2. **With Backend (Optional):**  
-   - Navigate to the `backend` folder and run `npm install` (if using Node.js backend).
-   - Start the backend server: `node backend/app.js`
-   - Visit [http://localhost:3000](http://localhost:3000) (or your configured port).
-
----
-
 ## 🧭 Topics
 
 - **🧠 Philosophy:**  
