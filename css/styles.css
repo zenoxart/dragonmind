@@ -69,151 +69,7 @@ body {
   }
 }
 
-.tree {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 4rem 0 3rem 0;
-  position: relative;
-  animation: fadeIn 1.5s 0.7s both;
-}
-
-.tree-root {
-  background: #2d0616;
-  padding: 1.2rem 2.5rem;
-  border-radius: 2rem;
-  font-size: 2.1rem;
-  font-family: 'UnifrakturCook', 'Cinzel', 'Georgia', serif;
-  font-weight: bold;
-  margin-bottom: 2.5rem;
-  color: #ff003c;
-  box-shadow: 0 6px 24px rgba(90, 10, 27, 0.4);
-  letter-spacing: 0.13em;
-  position: relative;
-  z-index: 2;
-  animation: pulseRoot 2.5s infinite alternate;
-}
-
-@keyframes pulseRoot {
-  from {
-    box-shadow: 0 6px 24px #5a0a1b80, 0 0 0 #ff003c00;
-  }
-
-  to {
-    box-shadow: 0 12px 36px #ff003c99, 0 0 16px #ff003c44;
-  }
-}
-
-.tree-branches {
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
-  align-items: flex-start;
-  position: relative;
-  margin-left: 2.5rem;
-}
-
-.tree-branches::before {
-  content: '';
-  position: absolute;
-  left: -1.2rem;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(to bottom, #ff003c 0%, #231a24 100%);
-  border-radius: 2px;
-  z-index: 0;
-  animation: branchPulse 2.5s infinite alternate;
-}
-
-.tree-branch {
-  position: relative;
-  background: linear-gradient(135deg, #2a0a18 60%, #231a24 100%);
-  padding: 1.5rem 2.5rem;
-  border-radius: 1.2rem;
-  text-align: left;
-  box-shadow: 0 4px 16px rgba(90, 10, 27, 0.25);
-  border: 1.5px solid #ff003c;
-  transition: transform 0.3s cubic-bezier(.77, 0, .18, 1), box-shadow 0.3s, border-color 0.2s;
-  margin-left: 1.5rem;
-  min-width: 260px;
-  max-width: 420px;
-  animation: fadeInUp 1.2s both;
-}
-
-.tree-branch::before {
-  content: '';
-  position: absolute;
-  left: -2.1rem;
-  top: 2rem;
-  width: 1.2rem;
-  height: 1.2rem;
-  background: #ff003c;
-  border: 3px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 16px #ff003c88;
-  z-index: 2;
-  transition: box-shadow 0.3s;
-}
-
-.tree-branch:hover::before {
-  box-shadow: 0 0 32px #ff003c, 0 0 8px #fff;
-}
-
-.tree-branch:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 16px 48px #ff003c55, 0 0 24px #ff003c33;
-  border-color: #fff;
-  z-index: 2;
-}
-
-.tree-branch a {
-  color: #ff003c;
-  font-size: 1.5rem;
-  text-decoration: none;
-  font-family: 'UnifrakturCook', 'Cinzel', 'Georgia', serif;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-shadow: 0 1px 12px #000, 0 0 4px #ff003c;
-  transition: color 0.2s, text-shadow 0.2s;
-}
-
-.tree-branch a:hover {
-  color: #fff;
-  text-shadow: 0 0 16px #ff003c, 0 0 8px #fff;
-  text-decoration: underline;
-}
-
-.tree-branch p {
-  color: #ffb3c6;
-  margin-top: 0.7rem;
-  font-size: 1.08rem;
-  font-family: 'Cinzel', 'Georgia', serif;
-  text-shadow: 0 1px 4px #000;
-}
-
-.tree::before {
-  content: '';
-  position: absolute;
-  top: 3.5rem;
-  left: 50%;
-  width: 4px;
-  height: 2.5rem;
-  background: linear-gradient(to bottom, #ff003c 60%, #231a24 100%);
-  transform: translateX(-50%);
-  z-index: 1;
-  animation: branchPulse 2.5s infinite alternate;
-}
-
-@keyframes branchPulse {
-  from {
-    box-shadow: 0 0 0 #ff003c00;
-  }
-
-  to {
-    box-shadow: 0 0 16px #ff003c88;
-  }
-}
+/* Remove all .tree and .mindmap related styles completely */
 
 .footer {
   text-align: center;
@@ -338,24 +194,26 @@ a:hover {
 }
 
 .forum-section {
-  background: linear-gradient(135deg, #2a0a18 60%, #18131d 100%);
-  border-radius: 1.2rem;
-  box-shadow: 0 2px 16px #2d061655;
-  padding: 2rem 1.5rem;
-  margin: 2.5rem auto 2rem auto;
+  background: #231a24;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px #ff003c22;
+  padding: 1.5rem 1.2rem;
+  margin: 2rem auto 1.5rem auto;
   max-width: 900px;
   color: #ffb3c6;
   animation: fadeIn 1.2s both;
-  border: 1.5px solid #ff003c33;
+  border: none;
 }
 
 .forum-section h3 {
-  color: #ff003c;
-  font-family: 'UnifrakturCook', 'Cinzel', 'Georgia', serif;
-  font-size: 1.3rem;
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.06em;
-  text-shadow: 0 1px 8px #000, 0 0 2px #ff003c44;
+  color: #fff;
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-size: 1.7rem;
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  text-shadow: 0 2px 12px #ff003c66, 0 1px 2px #000;
+  background: none;
 }
 
 .article-list {
@@ -365,29 +223,33 @@ a:hover {
 }
 
 .article-list li {
-  background: #231a24;
-  border-left: 4px solid #ff003c;
+  background: #2a0a18;
   border-radius: 0.7rem;
-  margin-bottom: 1.2rem;
-  padding: 1.2rem 1.5rem 1.2rem 1.2rem;
-  box-shadow: 0 2px 8px #ff003c22;
-  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+  margin-bottom: 1.1rem;
+  padding: 1.1rem 1.3rem;
+  box-shadow: 0 2px 12px #ff003c22, 0 1.5px 6px #0004;
+  transition: box-shadow 0.2s, background 0.2s, transform 0.18s;
   position: relative;
   animation: fadeInUp 1.1s both;
+  border-left: 5px solid #ff003c;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
 .article-list li:hover {
-  box-shadow: 0 6px 24px #ff003c55;
-  border-color: #fff;
-  background: #2a0a18;
+  background: #31121d;
+  box-shadow: 0 6px 24px #ff003c44, 0 2px 12px #0006;
+  transform: translateY(-2px) scale(1.015);
+  border-left: 5px solid #fff;
 }
 
 .article-title {
   color: #ff003c;
-  font-size: 1.18rem;
+  font-size: 1.22rem;
   font-family: 'Cinzel', 'Georgia', serif;
   font-weight: bold;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.1rem;
   text-decoration: none;
   display: inline-block;
   letter-spacing: 0.04em;
@@ -401,16 +263,150 @@ a:hover {
 }
 
 .article-meta {
-  font-size: 0.95rem;
+  font-size: 0.97rem;
   color: #ffb3c6;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
   font-family: 'Cinzel', 'Georgia', serif;
+  opacity: 0.85;
 }
 
 .article-excerpt {
   color: #f5e9e0;
-  font-size: 1.04rem;
+  font-size: 1.07rem;
   font-family: 'Cinzel', 'Georgia', serif;
-  margin-top: 0.4rem;
+  margin-top: 0.1rem;
   text-shadow: 0 1px 4px #000;
+  opacity: 0.96;
+}
+
+.tree-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+/* Pyramid Demo Styles (scoped) */
+.pyramid-demo {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  aspect-ratio: 16/9;
+  background: transparent;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px #ff003c22, 0 1.5px 6px #0004;
+  overflow: hidden;
+  min-height: 340px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.pyramid-demo #glcanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent !important; /* Ensure transparency */
+  border-radius: inherit;
+}
+
+.pyramid-demo #labelsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.pyramid-demo .label {
+  position: absolute;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2px 8px;
+  border-radius: 4px;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px #0008;
+  font-family: 'Cinzel', 'Georgia', serif;
+  letter-spacing: 0.03em;
+}
+
+.pyramid-demo .label:hover {
+  background: #fff;
+  color: #ff003c;
+}
+
+.pyramid-demo .rotate-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 44px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s, color 0.2s;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ff003c33;
+  box-shadow: 0 2px 8px #ff003c22;
+}
+
+.pyramid-demo .rotate-btn:hover {
+  background: #fff;
+  color: #ff003c;
+}
+
+.pyramid-demo #rotateLeft {
+  left: 1.2rem;
+}
+
+.pyramid-demo #rotateRight {
+  right: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  .pyramid-demo {
+    aspect-ratio: 1/1;
+    min-height: 220px;
+    max-width: 98vw;
+  }
+
+  .pyramid-demo .label {
+    font-size: 0.92rem;
+    padding: 2px 6px;
+  }
+
+  .pyramid-demo .rotate-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+    line-height: 36px;
+  }
+
+  .pyramid-demo #rotateLeft,
+  .pyramid-demo #rotateRight {
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+.logo-billboard {
+  transition: left 0.1s, top 0.1s;
+  z-index: 10;
 }
