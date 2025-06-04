@@ -17,27 +17,11 @@ const canvas = document.getElementById('glcanvas');
 
   // Shaders & setup (same as before)
   const vertexShaderSource = `
-    attribute vec3 aPosition;
-    attribute float aProgress;
-    attribute vec3 aStart;
-    attribute vec3 aEnd;
+    attribute vec4 aVertexPosition;
     uniform mat4 uModelViewMatrix;
     uniform mat4 uProjectionMatrix;
-    uniform float uTime;
     void main(void) {
-      // Direction of the edge
-      vec3 dir = normalize(aEnd - aStart);
-      // Find a perpendicular vector (not unique, but good enough)
-      vec3 up = abs(dir.y) < 0.99 ? vec3(0.0,1.0,0.0) : vec3(1.0,0.0,0.0);
-      vec3 perp = normalize(cross(dir, up));
-      // String vibration: standing wave, endpoints fixed
-      float amplitude = 0.08;
-      float freq = 2.0;
-      float speed = 2.0;
-      float phase = uTime * speed;
-      float wave = sin(3.14159 * aProgress) * sin(phase + freq * 3.14159 * aProgress);
-      vec3 displaced = aPosition + perp * amplitude * wave;
-      gl_Position = uProjectionMatrix * uModelViewMatrix * vec4(displaced, 1.0);
+      gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
     }
   `;
 
@@ -73,19 +57,14 @@ const canvas = document.getElementById('glcanvas');
   }
   gl.useProgram(shaderProgram);
 
-  // Update programInfo to include new attributes and time uniform
   const programInfo = {
     attribLocations: {
-      position: gl.getAttribLocation(shaderProgram, 'aPosition'),
-      progress: gl.getAttribLocation(shaderProgram, 'aProgress'),
-      start: gl.getAttribLocation(shaderProgram, 'aStart'),
-      end: gl.getAttribLocation(shaderProgram, 'aEnd'),
+      vertexPosition: gl.getAttribLocation(shaderProgram, 'aVertexPosition'),
     },
     uniformLocations: {
       projectionMatrix: gl.getUniformLocation(shaderProgram, 'uProjectionMatrix'),
       modelViewMatrix: gl.getUniformLocation(shaderProgram, 'uModelViewMatrix'),
       color: gl.getUniformLocation(shaderProgram, 'uColor'),
-      time: gl.getUniformLocation(shaderProgram, 'uTime'),
     },
   };
 
@@ -113,40 +92,6 @@ const canvas = document.getElementById('glcanvas');
   const edgeBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, edgeBuffer);
   gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, edges, gl.STATIC_DRAW);
-
-  // Helper to generate points along each edge
-  function generateStringEdges(vertices, edges, segments = 32) {
-    const positions = [];
-    const progresses = [];
-    for (let i = 0; i < edges.length; i += 2) {
-      const aIdx = edges[i], bIdx = edges[i + 1];
-      const ax = vertices[aIdx * 3], ay = vertices[aIdx * 3 + 1], az = vertices[aIdx * 3 + 2];
-      const bx = vertices[bIdx * 3], by = vertices[bIdx * 3 + 1], bz = vertices[bIdx * 3 + 2];
-      for (let s = 0; s <= segments; ++s) {
-        const t = s / segments;
-        positions.push(
-          ax * (1 - t) + bx * t,
-          ay * (1 - t) + by * t,
-          az * (1 - t) + bz * t,
-          ax, ay, az, // start point
-          bx, by, bz, // end point
-        );
-        progresses.push(t);
-      }
-    }
-    return {positions: new Float32Array(positions), progresses: new Float32Array(progresses)};
-  }
-
-  const stringSegments = 32;
-  const {positions: stringPositions, progresses: stringProgresses} = generateStringEdges(vertices, edges, stringSegments);
-
-  const stringBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, stringBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, stringPositions, gl.STATIC_DRAW);
-
-  const progressBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, progressBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, stringProgresses, gl.STATIC_DRAW);
 
   function createMat4() {
     return new Float32Array([
@@ -288,7 +233,7 @@ const canvas = document.getElementById('glcanvas');
   }
 
   function drawScene() {
-    gl.clearColor(0.13, 0.13, 0.13, 0);
+    gl.clearColor(0.13, 0.13, 0.13, 0); // Set alpha to 0 for transparency
     gl.clearDepth(1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
@@ -305,30 +250,18 @@ const canvas = document.getElementById('glcanvas');
     multiplyMat4(combinedMatrix, modelViewMatrix, rotationMatrix);
     modelViewMatrix = combinedMatrix;
 
-    // Bind and set up string attributes
-    gl.bindBuffer(gl.ARRAY_BUFFER, stringBuffer);
-    gl.vertexAttribPointer(programInfo.attribLocations.position, 3, gl.FLOAT, false, 36, 0);
-    gl.enableVertexAttribArray(programInfo.attribLocations.position);
-    gl.vertexAttribPointer(programInfo.attribLocations.start, 3, gl.FLOAT, false, 36, 12);
-    gl.enableVertexAttribArray(programInfo.attribLocations.start);
-    gl.vertexAttribPointer(programInfo.attribLocations.end, 3, gl.FLOAT, false, 36, 24);
-    gl.enableVertexAttribArray(programInfo.attribLocations.end);
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.vertexAttribPointer(programInfo.attribLocations.vertexPosition, 3, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, progressBuffer);
-    gl.vertexAttribPointer(programInfo.attribLocations.progress, 1, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(programInfo.attribLocations.progress);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, edgeBuffer);
 
     gl.uniformMatrix4fv(programInfo.uniformLocations.projectionMatrix, false, projectionMatrix);
     gl.uniformMatrix4fv(programInfo.uniformLocations.modelViewMatrix, false, modelViewMatrix);
-    gl.uniform4fv(programInfo.uniformLocations.color, [1, 1, 1, 1]);
-    gl.uniform1f(programInfo.uniformLocations.time, performance.now() * 0.001);
 
-    // Draw each edge as its own LINE_STRIP
-    const segments = stringSegments + 1; // points per edge
-    for (let i = 0; i < edges.length / 2; i++) {
-      const offset = i * segments;
-      gl.drawArrays(gl.LINE_STRIP, offset, segments);
-    }
+    gl.uniform4fv(programInfo.uniformLocations.color, [1, 1, 1, 1]);
+
+    gl.drawElements(gl.LINES, edges.length, gl.UNSIGNED_SHORT, 0);
 
     for (let i = 0; i < labels.length; i++) {
       const pos = verticesForLabels[i];

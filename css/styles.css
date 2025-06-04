@@ -410,3 +410,112 @@ a:hover {
   transition: left 0.1s, top 0.1s;
   z-index: 10;
 }
+
+.wisdom-section {
+  background: linear-gradient(120deg, #2a0a18 80%, #ff003c22 100%);
+  border-radius: 1.2rem;
+  box-shadow: 0 6px 32px #ff003c33, 0 2px 12px #0007;
+  padding: 2.2rem 1.5rem 1.7rem 1.5rem;
+  margin-bottom: 2.5rem;
+  border: 1.5px solid #ff003c55;
+  animation: fadeIn 1.2s both;
+  position: relative;
+  overflow: hidden;
+}
+
+.wisdom-title {
+  font-size: 2rem;
+  font-family: 'UnifrakturCook', 'Cinzel', 'Georgia', serif;
+  background: linear-gradient(90deg, #ff003c 40%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 18px #ff003c44, 0 1px 2px;
+  color:white;
+  margin-bottom: 1.3rem;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-weight: 800;
+}
+
+.wisdom-icon {
+  font-size: 1.7rem;
+  filter: drop-shadow(0 2px 8px #ff003c88 #000);
+  color: #000;
+}
+
+.wisdom-excerpt {
+  background: rgba(24, 19, 29, 0.82);
+  border-radius: 0.8rem;
+  padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+  border: 1.5px solid #ff003c33;
+  box-shadow: 0 2px 12px #ff003c22, 0 1.5px 6px #0004;
+  font-size: 1.13rem;
+  color: #ffe6f0;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  transition: box-shadow 0.2s;
+}
+
+.wisdom-excerpt h5 {
+  color: #ffb3c6;
+  font-size: 1.15rem;
+  margin-top: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Cinzel', 'Georgia', serif;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 8px #ff003c33;
+}
+
+.wisdom-excerpt ul {
+  padding-left: 1.2rem;
+  margin-bottom: 1.1rem;
+}
+
+.wisdom-excerpt li {
+  margin-bottom: 0.45rem;
+  padding-left: 0.1rem;
+  position: relative;
+  line-height: 1.6;
+  font-size: 1.07rem;
+}
+
+.wisdom-excerpt li::before {
+  content: "⟡";
+  color: #ff003c;
+  font-size: 1.1em;
+  margin-right: 0.7em;
+  position: relative;
+  top: 0.1em;
+  opacity: 0.8;
+}
+
+.wisdom-excerpt blockquote {
+  background: linear-gradient(90deg, #ff003c22 60%, #fff3cd33 100%);
+  border-left: 4px solid #ff003c;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1.09rem;
+  margin: 1.3rem 0 0.5rem 0;
+  padding: 1rem 1.2rem 1rem 1.3rem;
+  box-shadow: 0 2px 12px #ff003c22;
+  font-style: italic;
+  text-shadow: 0 1px 4px #0008;
+}
+
+@media (max-width: 700px) {
+  .wisdom-section {
+    padding: 1.1rem 0.4rem 0.8rem 0.4rem;
+  }
+
+  .wisdom-title {
+    font-size: 1.2rem;
+    gap: 0.4rem;
+  }
+
+  .wisdom-excerpt {
+    font-size: 1.01rem;
+    padding: 0.8rem 0.5rem 0.7rem 0.5rem;
+  }
+}
